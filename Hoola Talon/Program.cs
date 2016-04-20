@@ -205,6 +205,7 @@ namespace HoolaTalon
         private static void Combo()
         {
             var target = TargetSelector.GetTarget(E.Range, TargetSelector.DamageType.Physical);
+            if (target==null) return;
             if (CR && CRS == 0 && R.IsReady() && Player.Distance(target.ServerPosition) <= R.Range &&
                 (E.IsReady() || (!E.IsReady() && !CE)) && R.Instance.Name == IsFirstR) R.Cast();
             if (!Orbwalker.InAutoAttackRange(target) && E.IsReady() && CE && ((CR && CRS == 0 && R.IsReady() && R.Instance.Name == IsSecondR) || (CR && CRS == 1 && R.IsReady() && R.Instance.Name == IsFirstR) || !R.IsReady() || (R.IsReady() && !CR))) E.Cast(target);
