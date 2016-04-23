@@ -222,6 +222,7 @@ namespace HoolaTalon
         private static void Harass()
         {
             var target = TargetSelector.GetTarget(E.Range, TargetSelector.DamageType.Physical);
+            if (target==null) return;
             if (!Orbwalker.InAutoAttackRange(target) && E.IsReady() && HE) E.Cast(target);
             if ((!E.IsReady() || (E.IsReady() && !HE)) && HW && !Orbwalker.InAutoAttackRange(target) && Player.Distance(target) <= W.Range) W.Cast(target.ServerPosition);
         }
